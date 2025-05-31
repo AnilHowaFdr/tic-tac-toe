@@ -1,6 +1,8 @@
 const buttons = document.querySelectorAll(".button");
 const text = document.querySelector(".text");
 const reset = document.querySelector(".reset");
+const player1 = document.querySelector(".player1");
+const player2 = document.querySelector(".player2");
 
 const winType = [
   [0, 1, 2],
@@ -19,9 +21,13 @@ buttons.forEach((b) => {
   b.addEventListener("click", () => {
     if (turn) {
       b.innerHTML = "0";
+      player2.style.backgroundColor = "green";
+      player1.style.backgroundColor = "black";
       turn = false;
     } else {
       b.innerHTML = "X";
+      player1.style.backgroundColor = "green";
+      player2.style.backgroundColor = "black";
       turn = true;
     }
     b.disabled = true;
@@ -49,6 +55,8 @@ const winner = () => {
         text.innerHTML = `Winner is ${patternOne.innerHTML}`;
         buttons.forEach((win) => {
           win.disabled = true;
+          player2.style.backgroundColor = "black";
+          player1.style.backgroundColor = "black";
         });
       }
     }
